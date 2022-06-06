@@ -277,7 +277,6 @@ function callZoom() {
 
 function askPin() {
   zoomAskConferencePin(pin => {
-    if (!isNaN(pin)) {
       zoomCallConfig.conferencePin = pin;
       if (zoomCallConfig.conferenceType == CONFTYPE_HOST) {
         askHostKey();
@@ -285,12 +284,6 @@ function askPin() {
       else {
         callZoom();
       }
-    }
-    else {
-      UI.alert.display('Oups...', 'Le PIN doit être numérique...', () => {
-        askPin();
-      });
-    }
   }, (cancel) => { });
 }
 function askConfNumber() {
